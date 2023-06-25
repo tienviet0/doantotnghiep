@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GeminiStoreContainer" CdmEntityContainer="GeminiEntities">
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Gemini.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Gemini.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Gemini.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Gemini.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Gemini.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Gemini.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Gemini.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Gemini.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="fnSplit" FunctionName="Gemini.Store.fnSplit" />
+    <EntitySetMapping Name="BizProperties">
+      <EntityTypeMapping TypeName="Gemini.BizProperty">
+        <MappingFragment StoreEntitySet="BizProperty">
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="FloorPlans" ColumnName="FloorPlans" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
+          <ScalarProperty Name="Long" ColumnName="Long" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="PropertyType" ColumnName="PropertyType" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Garage" ColumnName="Garage" />
+          <ScalarProperty Name="Baths" ColumnName="Baths" />
+          <ScalarProperty Name="Beds" ColumnName="Beds" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BizPropertyAmenities">
+      <EntityTypeMapping TypeName="Gemini.BizPropertyAmenity">
+        <MappingFragment StoreEntitySet="BizPropertyAmenity">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="GuidProperty" ColumnName="GuidProperty" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CrmEmailSettings">
+      <EntityTypeMapping TypeName="Gemini.CrmEmailSetting">
+        <MappingFragment StoreEntitySet="CrmEmailSetting">
+          <ScalarProperty Name="DelayTime" ColumnName="DelayTime" />
+          <ScalarProperty Name="EnableSsl" ColumnName="EnableSsl" />
+          <ScalarProperty Name="IsHtml" ColumnName="IsHtml" />
+          <ScalarProperty Name="Port" ColumnName="Port" />
+          <ScalarProperty Name="Smtp" ColumnName="Smtp" />
+          <ScalarProperty Name="PassEmail" ColumnName="PassEmail" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CrmEmailTemplates">
+      <EntityTypeMapping TypeName="Gemini.CrmEmailTemplate">
+        <MappingFragment StoreEntitySet="CrmEmailTemplate">
+          <ScalarProperty Name="ContentTemplate" ColumnName="ContentTemplate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="SubjectEmail" ColumnName="SubjectEmail" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FControlMenus">
+      <EntityTypeMapping TypeName="Gemini.FControlMenu">
+        <MappingFragment StoreEntitySet="FControlMenu">
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="GuidMenu" ColumnName="GuidMenu" />
+          <ScalarProperty Name="GuidControl" ColumnName="GuidControl" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FPropertyGalleries">
+      <EntityTypeMapping TypeName="Gemini.FPropertyGallery">
+        <MappingFragment StoreEntitySet="FPropertyGallery">
+          <ScalarProperty Name="GuidGallery" ColumnName="GuidGallery" />
+          <ScalarProperty Name="GuidProperty" ColumnName="GuidProperty" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRoleControlMenus">
+      <EntityTypeMapping TypeName="Gemini.FRoleControlMenu">
+        <MappingFragment StoreEntitySet="FRoleControlMenu">
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="GuidMenu" ColumnName="GuidMenu" />
+          <ScalarProperty Name="GuidControl" ColumnName="GuidControl" />
+          <ScalarProperty Name="GuidRole" ColumnName="GuidRole" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SControls">
+      <EntityTypeMapping TypeName="Gemini.SControl">
+        <MappingFragment StoreEntitySet="SControl">
+          <ScalarProperty Name="Orderby" ColumnName="Orderby" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="EventClick" ColumnName="EventClick" />
+          <ScalarProperty Name="SpriteCssClass" ColumnName="SpriteCssClass" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SMenus">
+      <EntityTypeMapping TypeName="Gemini.SMenu">
+        <MappingFragment StoreEntitySet="SMenu">
+          <ScalarProperty Name="RouterUrl" ColumnName="RouterUrl" />
+          <ScalarProperty Name="FriendUrl" ColumnName="FriendUrl" />
+          <ScalarProperty Name="LinkUrl" ColumnName="LinkUrl" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="GuidParent" ColumnName="GuidParent" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="OrderMenu" ColumnName="OrderMenu" />
+          <ScalarProperty Name="GuidLanguage" ColumnName="GuidLanguage" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SRoles">
+      <EntityTypeMapping TypeName="Gemini.SRole">
+        <MappingFragment StoreEntitySet="SRole">
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SUsers">
+      <EntityTypeMapping TypeName="Gemini.SUser">
+        <MappingFragment StoreEntitySet="SUser">
+          <ScalarProperty Name="FullAddress" ColumnName="FullAddress" />
+          <ScalarProperty Name="LinkedIn" ColumnName="LinkedIn" />
+          <ScalarProperty Name="Twitter" ColumnName="Twitter" />
+          <ScalarProperty Name="Facebook" ColumnName="Facebook" />
+          <ScalarProperty Name="Skype" ColumnName="Skype" />
+          <ScalarProperty Name="RecordsInPage" ColumnName="RecordsInPage" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="Avartar" ColumnName="Avartar" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="GuidRole" ColumnName="GuidRole" />
+          <ScalarProperty Name="Notification" ColumnName="Notification" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Gemini.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UGalleries">
+      <EntityTypeMapping TypeName="Gemini.UGallery">
+        <MappingFragment StoreEntitySet="UGallery">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="GuidGroup" ColumnName="GuidGroup" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UGroups">
+      <EntityTypeMapping TypeName="Gemini.UGroup">
+        <MappingFragment StoreEntitySet="UGroup">
+          <ScalarProperty Name="LanguageGuid" ColumnName="LanguageGuid" />
+          <ScalarProperty Name="ParentGuid" ColumnName="ParentGuid" />
+          <ScalarProperty Name="CountView" ColumnName="CountView" />
+          <ScalarProperty Name="SeoFriendUrl" ColumnName="SeoFriendUrl" />
+          <ScalarProperty Name="SeoImage" ColumnName="SeoImage" />
+          <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
+          <ScalarProperty Name="SeoTitle" ColumnName="SeoTitle" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

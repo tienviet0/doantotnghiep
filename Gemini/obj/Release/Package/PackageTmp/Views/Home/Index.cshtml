@@ -1,0 +1,82 @@
+﻿@using Gemini.Controllers.Bussiness
+
+@model Gemini.Models._20_Web.HomeModel
+@{
+    Layout = "~/Views/Shared/_Root.Head.cshtml";
+}
+
+<!-- Hero Section Begin -->
+<section class="hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="hero__categories">
+                    <div class="hero__categories__all">
+                        <i class="fa fa-bars"></i>
+                        <span>Danh mục tin</span>
+                    </div>
+                    <ul>
+                        @if (Model.ListPosCategory != null && Model.ListPosCategory.Any())
+                        {
+                            foreach (var item in Model.ListPosCategory)
+                            {
+                                <li><a href="/danh-muc/@item.SeoFriendUrl">@item.Name</a></li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="hero__search">
+                    <div class="hero__search__form">
+                        <form action="javascript:loadSearchData();">
+                            <input type="text" id="keyWord" placeholder="Tìm kiếm ...">
+                            <button type="button" class="site-btn" onclick="loadSearchData();"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </form>
+                    </div>
+                    <div class="hero__search__phone">
+                        <div class="hero__search__phone__icon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="hero__search__phone__text">
+                            <h5>0983 279 347</h5>
+                            <span>Hỗ trợ 24/7</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero__item set-bg" data-setbg="/assets/theme/img/hero/banner.jpg">
+                    <div class="hero__text">
+                        <span>W09</span>
+                        <h2>Sàn giao dịch <br />thông tin, rao vặt, liên hệ</h2>
+                        <p>TP. Đà Nẵng</p>
+                        <a href="/" class="primary-btn">MUA NGAY</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Hero Section End -->
+
+@Html.Action("PartialLatestProduct", "HomeCommon")
+
+<!-- Banner Begin -->
+<div class="banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="banner__pic">
+                    <img src="/assets/theme/img/banner/banner-1.jpg" alt="" width="570" height="270">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="banner__pic">
+                    <img src="/assets/theme/img/banner/banner-2.jpg" alt="" width="570" height="270">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Banner End -->
+
+@Html.Action("PartialFeaturedProduct", "HomeCommon")

@@ -1,0 +1,222 @@
+﻿@model Gemini.Models._20_Web.SearchModel
+@{
+    Layout = "~/Views/Shared/_Root.Head.cshtml";
+
+    var totalRecord = (int)ViewBag.TotalItem;
+    var pageActive = (int)ViewBag.Page;
+
+    const int recordMax = 6;
+    var pageStart = 1;
+    var numberPage = 3;
+    int pageMax = 0;
+    int soTrang;
+
+    if (totalRecord % recordMax == 0)
+    {
+        soTrang = totalRecord / recordMax;
+    }
+    else
+    {
+        soTrang = (totalRecord / recordMax) + 1;
+    }
+
+    if (soTrang < numberPage)
+    {
+        pageMax = soTrang;
+    }
+    else
+    {
+        if (pageActive != 1)
+        {
+            pageStart = pageActive - 1;
+            pageMax = numberPage + pageActive - 2;
+        }
+        else
+        {
+            pageMax = numberPage + pageActive - 1;
+        }
+    }
+
+    if (pageActive != 1)
+    {
+        pageStart = pageActive - 1;
+    }
+}
+
+<main id="main">
+    <!-- ======= Intro Single ======= -->
+    <section class="intro-single">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-8">
+                    <div class="title-single-box">
+                        <h1 class="title-single">@ViewBag.TypeName</h1>
+                        <span class="color-text-a">@ViewBag.PropertyTypeName</span>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-4">
+                    <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="/">Trang chủ</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                Tìm kiếm
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section><!-- End Intro Single-->
+    <!-- ======= Property Grid ======= -->
+    <section class="property-grid grid">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12" style="position: relative; top: -100px;">
+                    <div class="grid-option">
+                        <form>
+                            <select class="custom-select form-select" onchange="changeSortBy()" id="sortBy" style="float: right;">
+                                <option selected value="0">All</option>
+                                @foreach (var item in Gemini.Controllers.Bussiness.BizProperty_SortBy.dicDesc)
+                                {
+                                    <option value="@item.Key">@item.Value</option>
+                                }
+                            </select>
+                        </form>
+                    </div>
+                </div>
+                @if (Model.Properties != null && Model.Properties.Any())
+                {
+                    foreach (var item in Model.Properties)
+                    {
+                        <div class="col-md-4">
+                            <div class="card-box-a card-shadow">
+                                <div class="img-box-a">
+                                    <img src="@item.LinkImg0" alt="" class="img-a img-fluid category-property-img">
+                                </div>
+                                <div class="card-overlay">
+                                    <div class="card-overlay-a-content">
+                                        <div class="card-header-a">
+                                            <h2 class="card-title-a">
+                                                <a href="/property/@item.Guid">
+                                                    Dự án #@(item.Sort + 1)
+                                                    <br><span style="font-size: 15px"><i class="fa fa-calendar"></i> @item.CreatedAt.Value.ToString("dd/MM/yyyy")</span>
+                                                </a>
+                                            </h2>
+                                        </div>
+                                        <div class="card-body-a">
+                                            <div class="price-box d-flex">
+                                                <span class="price-a">@item.TypeName | <i class="fa fa-coins"></i> @String.Format("{0:n0}", item.Price).Replace(".", ",")</span>
+                                                <span class="price-a" style="margin-left: 5px"><i class="fa fa-eye"></i> @String.Format("{0:n0}", item.ViewCount).Replace(".", ",")</span>
+                                            </div>
+                                            <a href="/property/@item.Guid" class="link-a">
+                                                @item.PropertyTypeName
+                                                <span class="bi bi-chevron-right" style="float: right"></span>
+                                            </a>
+                                        </div>
+                                        <div class="card-footer-a">
+                                            <ul class="card-info d-flex justify-content-around">
+                                                <li>
+                                                    <h4 class="card-info-title">Diện tích</h4>
+                                                    <span>
+                                                        @item.Area m
+                                                        <sup>2</sup>
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <h4 class="card-info-title">Phòng ngủ</h4>
+                                                    <span>@item.Beds</span>
+                                                </li>
+                                                <li>
+                                                    <h4 class="card-info-title">Phòng tắm</h4>
+                                                    <span>@item.Baths</span>
+                                                </li>
+                                                <li>
+                                                    <h4 class="card-info-title">Garages</h4>
+                                                    <span>@item.Garage</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="product__pagination" style="text-align: center">
+                        <ul class="pagination" style="display: block">
+                            
+                        </ul>
+                    </div>
+                    <nav class="pagination-a">
+                        <ul class="pagination justify-content-end" style="justify-content: center !important">
+                            @if (soTrang > 1)
+                            {
+                                <li class="page-item">
+                                    <a class="page-link" onclick="changePage('1')" aria-label="Previous">
+                                        <span class="bi bi-chevron-left"></span>
+                                    </a>
+                                </li>
+                            }
+                            @for (var i = (pageMax - numberPage) > 0 ? (pageMax > soTrang ? soTrang : pageMax) - (numberPage - 1) : 1; i <= pageMax; i++)
+                            {
+                                if (i <= soTrang)
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link" id="page-@(@i)" onclick="changePage('@i')">
+                                            @i
+                                        </a>
+                                    </li>
+                                }
+                            }
+                            @if (soTrang > 1)
+                            {
+                                <li class="page-item next">
+                                    <a class="page-link" onclick="changePage('@soTrang')" aria-label="Next">
+                                        <span class="bi bi-chevron-right"></span>
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section><!-- End Property Grid Single-->
+</main><!-- End #main -->
+
+<script>
+    var page = 1;
+    var sortBy = 0;
+
+    if (location.search) {
+        if (location.search.includes('page')) {
+            page = location.search.split('page=')[1].split('&')[0];
+        }
+        if (location.search.includes('sortBy')) {
+            sortBy = location.search.split('sortBy=')[1].split('&')[0];
+            $('#sortBy').val(sortBy);
+        }
+    }
+
+    function changePage(val) {
+        location.href = location.href.replace("page=" + page, "page=" + val);
+    }
+
+    function changeSortBy() {
+        location.href = location.href.replace("sortBy=" + sortBy, "sortBy=" + $('#sortBy').val());
+    }
+
+    var i = 1;
+    for (i = 1; i <= @soTrang; i++) {
+        if (page == i) {
+            $('.page-item').removeClass('active');
+            $('#page-' + i)[0].parentNode.className += " active"
+        }
+    }
+</script>

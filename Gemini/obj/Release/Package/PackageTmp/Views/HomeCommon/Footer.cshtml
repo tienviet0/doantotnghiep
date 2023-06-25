@@ -1,0 +1,77 @@
+﻿@model Gemini.Models._20_Web.FooterModel
+
+<!-- Footer Section Begin -->
+<footer class="footer spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="footer__about">
+                    <div class="footer__about__logo">
+                        <a href="/"><img src="~/assets/theme/img/logo.png" alt=""></a>
+                    </div>
+                    <ul>
+                        <li>Địa chỉ: TP. Đà Nẵng</li>
+                        <li>SĐT: 0983 279 347</li>
+                        <li>Email: duongtq6797@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
+                <div class="footer__widget">
+                    <h6>Danh mục tin</h6>
+                    @if (Model.ListPosCategory != null && Model.ListPosCategory.Any())
+                    {
+                        if (Model.ListPosCategory.Count > 6)
+                        {
+                            <ul>
+                                @for (var i = 0; i <= 5; i++)
+                                {
+                                    <li><a href="/danh-muc/@Model.ListPosCategory[i].SeoFriendUrl">@Model.ListPosCategory[i].Name</a></li>
+                                }
+                            </ul>
+                            <ul>
+                                @for (var i = 6; i <= Model.ListPosCategory.Count; i++)
+                                {
+                                    <li><a href="/danh-muc/@Model.ListPosCategory[i].SeoFriendUrl">@Model.ListPosCategory[i].Name</a></li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <ul>
+                                @for (var i = 0; i < Model.ListPosCategory.Count; i++)
+                                {
+                                    <li><a href="/danh-muc/@Model.ListPosCategory[i].SeoFriendUrl">@Model.ListPosCategory[i].Name</a></li>
+                                }
+                            </ul>
+                        }
+
+                    }
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="footer__widget">
+                    <h6>Liên hệ với chúng tôi</h6>
+                    <div class="footer__widget__social">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="footer__copyright">
+                    <div class="footer__copyright__text">
+                        <p>
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> All rights reserved
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer Section End -->

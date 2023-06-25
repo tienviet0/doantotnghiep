@@ -1,0 +1,277 @@
+﻿@model Gemini.Models._20_Web.HomeModel
+@{
+    Layout = "~/Views/Shared/_Root.Head.cshtml";
+}
+
+<!-- ======= Intro Section ======= -->
+<div class="intro intro-carousel swiper position-relative">
+    <div class="swiper-wrapper">
+        @if (Model.MostViewProperties != null && Model.MostViewProperties.Any())
+        {
+            foreach (var item in Model.MostViewProperties)
+            {
+                <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(@item.LinkImg0)">
+                    <div class="overlay overlay-a"></div>
+                    <div class="intro-content display-table">
+                        <div class="table-cell">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <div class="intro-body">
+                                            <p class="intro-title-top">
+                                                Dự án #@(item.Sort + 1) - @item.PropertyTypeName
+                                                <br><i class="fa fa-calendar"></i> @item.CreatedAt.Value.ToString("dd/MM/yyyy")
+                                            </p>
+                                            <h1 class="intro-title mb-4 ">
+                                                @if (item.Address.Split(',').Length > 0)
+                                                {
+                                                    <span class="color-b">@item.Address.Split(',')[0].Trim() </span>
+                                                    <br />@item.Address.Split(',')[1].Trim()
+                                                }
+                                                else
+                                                {
+                                                    <span class="color-b">@item.Address </span>
+                                                }
+                                            </h1>
+                                            <p class="intro-subtitle intro-price">
+                                                <a href="/property/@item.Guid">
+                                                    <span class="price-a">@item.TypeName | <i class="fa fa-coins"></i> @String.Format("{0:n0}", item.Price).Replace(".", ",")</span>
+                                                    <span class="price-a"><i class="fa fa-eye"></i> @String.Format("{0:n0}", item.ViewCount).Replace(".", ",")</span>
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+    <div class="swiper-pagination"></div>
+</div><!-- End Intro Section -->
+<main id="main">
+    <!-- ======= Services Section ======= -->
+    <section class="section-services section-t8">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title-wrap d-flex justify-content-between">
+                        <div class="title-box">
+                            <h2 class="title-a">Vì sao bạn nên chọn RealEstate</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card-box-c foo">
+                        <div class="card-header-c d-flex">
+                            <div class="card-box-ico">
+                                <span class="bi bi-cart"></span>
+                            </div>
+                            <div class="card-title-c align-self-center">
+                                <h2 class="title-c">Chất lượng tốt nhất</h2>
+                            </div>
+                        </div>
+                        <div class="card-body-c">
+                            <p class="content-c">
+                                Nghiên cứu, thiết kế và đầu tư xây dựng với hệ thống dịch vụ với chất lượng tốt nhất
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-box-c foo">
+                        <div class="card-header-c d-flex">
+                            <div class="card-box-ico">
+                                <span class="bi bi-calendar4-week"></span>
+                            </div>
+                            <div class="card-title-c align-self-center">
+                                <h2 class="title-c">Tìm kiếm dễ dàng</h2>
+                            </div>
+                        </div>
+                        <div class="card-body-c">
+                            <p class="content-c">
+                                Tìm kiếm bất động sản bạn muốn theo danh mục cực kì dễ dàng
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-box-c foo">
+                        <div class="card-header-c d-flex">
+                            <div class="card-box-ico">
+                                <span class="bi bi-card-checklist"></span>
+                            </div>
+                            <div class="card-title-c align-self-center">
+                                <h2 class="title-c">Kết nối với nhà đầu tư</h2>
+                            </div>
+                        </div>
+                        <div class="card-body-c">
+                            <p class="content-c">
+                                Nhà đầu tư sẽ mang đến những sản phẩm và dịch vụ tốt nhất đáp ứng nhu cầu của bạn
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- End Services Section -->
+    <!-- ======= Latest Properties Section ======= -->
+    <section class="section-property section-t8">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title-wrap d-flex justify-content-between">
+                        <div class="title-box">
+                            <h2 class="title-a">Dự án mới nhất</h2>
+                        </div>
+                        <div class="title-link">
+                            <a href="/category">
+                                Tất cả dự án
+                                <span class="bi bi-chevron-right"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="property-carousel" class="swiper">
+                <div class="swiper-wrapper">
+                    @if (Model.NewestProperties != null && Model.NewestProperties.Any())
+                    {
+                        foreach (var item in Model.NewestProperties)
+                        {
+                            <div class="carousel-item-b swiper-slide">
+                                <div class="card-box-a card-shadow">
+                                    <div class="img-box-a">
+                                        <img src="@item.LinkImg0" alt="" class="img-a img-fluid">
+                                    </div>
+                                    <div class="card-overlay">
+                                        <div class="card-overlay-a-content">
+                                            <div class="card-header-a">
+                                                <h2 class="card-title-a">
+                                                    <a href="/property/@item.Guid">
+                                                        Dự án #@(item.Sort + 1)
+                                                        <br><span style="font-size: 15px"><i class="fa fa-calendar"></i> @item.CreatedAt.Value.ToString("dd/MM/yyyy")</span>
+                                                    </a>
+                                                </h2>
+                                            </div>
+                                            <div class="card-body-a">
+                                                <div class="price-box d-flex">
+                                                    <span class="price-a">@item.TypeName | <i class="fa fa-coins"></i> @String.Format("{0:n0}", item.Price).Replace(".", ",")</span>
+                                                    <span class="price-a" style="margin-left: 5px"><i class="fa fa-eye"></i> @String.Format("{0:n0}", item.ViewCount).Replace(".", ",")</span>
+                                                </div>
+                                                <a href="/property/@item.Guid" class="link-a">
+                                                    @item.PropertyTypeName
+                                                    <span class="bi bi-chevron-right" style="float: right"></span>
+                                                </a>
+                                            </div>
+                                            <div class="card-footer-a">
+                                                <ul class="card-info d-flex justify-content-around">
+                                                    <li>
+                                                        <h4 class="card-info-title">Diện tích</h4>
+                                                        <span>
+                                                            @item.Area m
+                                                            <sup>2</sup>
+                                                        </span>
+                                                    </li>
+                                                    <li>
+                                                        <h4 class="card-info-title">Phòng ngủ</h4>
+                                                        <span>@item.Beds</span>
+                                                    </li>
+                                                    <li>
+                                                        <h4 class="card-info-title">Phòng tắm</h4>
+                                                        <span>@item.Baths</span>
+                                                    </li>
+                                                    <li>
+                                                        <h4 class="card-info-title">Garages</h4>
+                                                        <span>@item.Garage</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- End carousel item -->
+                        }
+                    }
+                </div>
+            </div>
+            <div class="propery-carousel-pagination carousel-pagination"></div>
+
+        </div>
+    </section><!-- End Latest Properties Section -->
+    <!-- ======= Testimonials Section ======= -->
+    <section class="section-testimonials section-t8 nav-arrow-a">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title-wrap d-flex justify-content-between">
+                        <div class="title-box">
+                            <h2 class="title-a">Nhận xét khách hàng</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="testimonial-carousel" class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="carousel-item-a swiper-slide">
+                        <div class="testimonials-box">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="testimonial-img">
+                                        <img src="/assets/theme/assets/img/testimonial-1.jpg" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="testimonial-ico">
+                                        <i class="bi bi-chat-quote-fill"></i>
+                                    </div>
+                                    <div class="testimonials-content">
+                                        <p class="testimonial-text">
+                                            Cực kỳ uy tín, đáng tin cậy. Có lẽ mình sẽ giới thiệu thêm người thân của mình biết đến đơn vị này
+                                        </p>
+                                    </div>
+                                    <div class="testimonial-author-box">
+                                        <img src="/assets/theme/assets/img/mini-testimonial-1.jpg" alt="" class="testimonial-avatar">
+                                        <h5 class="testimonial-author">A.Dũng & C.Phương</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End carousel item -->
+
+                    <div class="carousel-item-a swiper-slide">
+                        <div class="testimonials-box">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="testimonial-img">
+                                        <img src="/assets/theme/assets/img/testimonial-2.jpg" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="testimonial-ico">
+                                        <i class="bi bi-chat-quote-fill"></i>
+                                    </div>
+                                    <div class="testimonials-content">
+                                        <p class="testimonial-text">
+                                            Các tư vấn viên nhiệt tình hỗ trợ, vì vậy tôi đã tìm được căn nhà ưng ý cho cả gia đình nhỏ của tôi để chào đón thành viên mới
+                                        </p>
+                                    </div>
+                                    <div class="testimonial-author-box">
+                                        <img src="/assets/theme/assets/img/mini-testimonial-2.jpg" alt="" class="testimonial-avatar">
+                                        <h5 class="testimonial-author">A.Cương & C.Nga</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End carousel item -->
+                </div>
+            </div>
+            <div class="testimonial-carousel-pagination carousel-pagination"></div>
+        </div>
+    </section><!-- End Testimonials Section -->
+</main><!-- End #main -->

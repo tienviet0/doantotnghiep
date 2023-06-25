@@ -1,0 +1,454 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Gemini" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+  <EntityContainer Name="GeminiEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Gemini.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Gemini.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="fnSplit" IsComposable="true" ReturnType="Collection(String)">
+      <Parameter Name="sInputList" Mode="In" Type="String" />
+      <Parameter Name="sDelimiter" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="BizProperties" EntityType="Gemini.BizProperty" />
+    <EntitySet Name="BizPropertyAmenities" EntityType="Gemini.BizPropertyAmenity" />
+    <EntitySet Name="CrmEmailSettings" EntityType="Gemini.CrmEmailSetting" />
+    <EntitySet Name="CrmEmailTemplates" EntityType="Gemini.CrmEmailTemplate" />
+    <EntitySet Name="FControlMenus" EntityType="Gemini.FControlMenu" />
+    <EntitySet Name="FPropertyGalleries" EntityType="Gemini.FPropertyGallery" />
+    <EntitySet Name="FRoleControlMenus" EntityType="Gemini.FRoleControlMenu" />
+    <EntitySet Name="SControls" EntityType="Gemini.SControl" />
+    <EntitySet Name="SMenus" EntityType="Gemini.SMenu" />
+    <EntitySet Name="SRoles" EntityType="Gemini.SRole" />
+    <EntitySet Name="SUsers" EntityType="Gemini.SUser" />
+    <EntitySet Name="sysdiagrams" EntityType="Gemini.sysdiagram" />
+    <EntitySet Name="UGalleries" EntityType="Gemini.UGallery" />
+    <EntitySet Name="UGroups" EntityType="Gemini.UGroup" />
+    <AssociationSet Name="FK_BizProperty_SUser" Association="Gemini.FK_BizProperty_SUser">
+      <End Role="SUser" EntitySet="SUsers" />
+      <End Role="BizProperty" EntitySet="BizProperties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BizPropertyAmenity_BizProperty" Association="Gemini.FK_BizPropertyAmenity_BizProperty">
+      <End Role="BizProperty" EntitySet="BizProperties" />
+      <End Role="BizPropertyAmenity" EntitySet="BizPropertyAmenities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FPropertyGallery_BizProperty" Association="Gemini.FK_FPropertyGallery_BizProperty">
+      <End Role="BizProperty" EntitySet="BizProperties" />
+      <End Role="FPropertyGallery" EntitySet="FPropertyGalleries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FControlMenu_SControl" Association="Gemini.FK_FControlMenu_SControl">
+      <End Role="SControl" EntitySet="SControls" />
+      <End Role="FControlMenu" EntitySet="FControlMenus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FControlMenu_SMenu" Association="Gemini.FK_FControlMenu_SMenu">
+      <End Role="SMenu" EntitySet="SMenus" />
+      <End Role="FControlMenu" EntitySet="FControlMenus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FPropertyGallery_UGallery" Association="Gemini.FK_FPropertyGallery_UGallery">
+      <End Role="UGallery" EntitySet="UGalleries" />
+      <End Role="FPropertyGallery" EntitySet="FPropertyGalleries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FRoleControlMenu_SRole" Association="Gemini.FK_FRoleControlMenu_SRole">
+      <End Role="SRole" EntitySet="SRoles" />
+      <End Role="FRoleControlMenu" EntitySet="FRoleControlMenus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SUser_SRole" Association="Gemini.FK_SUser_SRole">
+      <End Role="SRole" EntitySet="SRoles" />
+      <End Role="SUser" EntitySet="SUsers" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="BizProperty">
+    <Key>
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Area" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Beds" Type="Int32" Nullable="false" />
+    <Property Name="Baths" Type="Int32" Nullable="false" />
+    <Property Name="Garage" Type="Int32" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="PropertyType" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Long" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Lat" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="FloorPlans" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Sort" Type="Int32" Nullable="false" />
+    <Property Name="ViewCount" Type="Int32" Nullable="false" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" Nullable="false" />
+    <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="SUser" Relationship="Gemini.FK_BizProperty_SUser" FromRole="BizProperty" ToRole="SUser" />
+    <NavigationProperty Name="BizPropertyAmenities" Relationship="Gemini.FK_BizPropertyAmenity_BizProperty" FromRole="BizProperty" ToRole="BizPropertyAmenity" />
+    <NavigationProperty Name="FPropertyGalleries" Relationship="Gemini.FK_FPropertyGallery_BizProperty" FromRole="BizProperty" ToRole="FPropertyGallery" />
+  </EntityType>
+  <EntityType Name="BizPropertyAmenity">
+    <Key>
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="GuidProperty" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BizProperty" Relationship="Gemini.FK_BizPropertyAmenity_BizProperty" FromRole="BizPropertyAmenity" ToRole="BizProperty" />
+  </EntityType>
+  <EntityType Name="CrmEmailSetting">
+    <Key>
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="Note" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="PassEmail" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Smtp" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Port" Type="Int32" Nullable="false" />
+    <Property Name="IsHtml" Type="Boolean" Nullable="false" />
+    <Property Name="EnableSsl" Type="Boolean" Nullable="false" />
+    <Property Name="DelayTime" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CrmEmailTemplate">
+    <Key>
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SubjectEmail" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="Note" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ContentTemplate" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="FControlMenu">
+    <Key>
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="GuidControl" Type="Guid" />
+    <Property Name="GuidMenu" Type="Guid" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Note" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SControl" Relationship="Gemini.FK_FControlMenu_SControl" FromRole="FControlMenu" ToRole="SControl" />
+    <NavigationProperty Name="SMenu" Relationship="Gemini.FK_FControlMenu_SMenu" FromRole="FControlMenu" ToRole="SMenu" />
+  </EntityType>
+  <EntityType Name="FPropertyGallery">
+    <Key>
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="GuidProperty" Type="Guid" Nullable="false" />
+    <Property Name="GuidGallery" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="BizProperty" Relationship="Gemini.FK_FPropertyGallery_BizProperty" FromRole="FPropertyGallery" ToRole="BizProperty" />
+    <NavigationProperty Name="UGallery" Relationship="Gemini.FK_FPropertyGallery_UGallery" FromRole="FPropertyGallery" ToRole="UGallery" />
+  </EntityType>
+  <EntityType Name="FRoleControlMenu">
+    <Key>
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="GuidRole" Type="Guid" Nullable="false" />
+    <Property Name="GuidControl" Type="Guid" />
+    <Property Name="GuidMenu" Type="Guid" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Note" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SRole" Relationship="Gemini.FK_FRoleControlMenu_SRole" FromRole="FRoleControlMenu" ToRole="SRole" />
+  </EntityType>
+  <EntityType Name="SControl">
+    <Key>
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="Note" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SpriteCssClass" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="EventClick" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Orderby" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="FControlMenus" Relationship="Gemini.FK_FControlMenu_SControl" FromRole="SControl" ToRole="FControlMenu" />
+  </EntityType>
+  <EntityType Name="SMenu">
+    <Key>
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="Note" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="GuidLanguage" Type="Guid" />
+    <Property Name="OrderMenu" Type="Int32" />
+    <Property Name="Icon" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="GuidParent" Type="Guid" />
+    <Property Name="Type" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="LinkUrl" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="FriendUrl" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="RouterUrl" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="FControlMenus" Relationship="Gemini.FK_FControlMenu_SMenu" FromRole="SMenu" ToRole="FControlMenu" />
+  </EntityType>
+  <EntityType Name="SRole">
+    <Key>
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="Note" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="IsAdmin" Type="Boolean" />
+    <NavigationProperty Name="FRoleControlMenus" Relationship="Gemini.FK_FRoleControlMenu_SRole" FromRole="SRole" ToRole="FRoleControlMenu" />
+    <NavigationProperty Name="SUsers" Relationship="Gemini.FK_SUser_SRole" FromRole="SRole" ToRole="SUser" />
+  </EntityType>
+  <EntityType Name="SUser">
+    <Key>
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="Note" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Notification" Type="Boolean" Nullable="false" />
+    <Property Name="GuidRole" Type="Guid" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Position" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Avartar" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="StartDate" Type="DateTime" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Precision="0" />
+    <Property Name="RecordsInPage" Type="Int32" />
+    <Property Name="Skype" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Facebook" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Twitter" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="LinkedIn" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="FullAddress" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BizProperties" Relationship="Gemini.FK_BizProperty_SUser" FromRole="SUser" ToRole="BizProperty" />
+    <NavigationProperty Name="SRole" Relationship="Gemini.FK_SUser_SRole" FromRole="SUser" ToRole="SRole" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="UGallery">
+    <Key>
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="Note" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Link" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="GuidGroup" Type="Guid" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="FPropertyGalleries" Relationship="Gemini.FK_FPropertyGallery_UGallery" FromRole="UGallery" ToRole="FPropertyGallery" />
+  </EntityType>
+  <EntityType Name="UGroup">
+    <Key>
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="Note" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SeoTitle" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SeoDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SeoImage" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SeoFriendUrl" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CountView" Type="Int32" />
+    <Property Name="ParentGuid" Type="Guid" />
+    <Property Name="LanguageGuid" Type="Guid" />
+  </EntityType>
+  <Association Name="FK_BizProperty_SUser">
+    <End Type="Gemini.SUser" Role="SUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Gemini.BizProperty" Role="BizProperty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SUser">
+        <PropertyRef Name="Guid" />
+      </Principal>
+      <Dependent Role="BizProperty">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BizPropertyAmenity_BizProperty">
+    <End Type="Gemini.BizProperty" Role="BizProperty" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Gemini.BizPropertyAmenity" Role="BizPropertyAmenity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BizProperty">
+        <PropertyRef Name="Guid" />
+      </Principal>
+      <Dependent Role="BizPropertyAmenity">
+        <PropertyRef Name="GuidProperty" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FPropertyGallery_BizProperty">
+    <End Type="Gemini.BizProperty" Role="BizProperty" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Gemini.FPropertyGallery" Role="FPropertyGallery" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BizProperty">
+        <PropertyRef Name="Guid" />
+      </Principal>
+      <Dependent Role="FPropertyGallery">
+        <PropertyRef Name="GuidProperty" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FControlMenu_SControl">
+    <End Type="Gemini.SControl" Role="SControl" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Gemini.FControlMenu" Role="FControlMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SControl">
+        <PropertyRef Name="Guid" />
+      </Principal>
+      <Dependent Role="FControlMenu">
+        <PropertyRef Name="GuidControl" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FControlMenu_SMenu">
+    <End Type="Gemini.SMenu" Role="SMenu" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Gemini.FControlMenu" Role="FControlMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SMenu">
+        <PropertyRef Name="Guid" />
+      </Principal>
+      <Dependent Role="FControlMenu">
+        <PropertyRef Name="GuidMenu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FPropertyGallery_UGallery">
+    <End Type="Gemini.UGallery" Role="UGallery" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Gemini.FPropertyGallery" Role="FPropertyGallery" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UGallery">
+        <PropertyRef Name="Guid" />
+      </Principal>
+      <Dependent Role="FPropertyGallery">
+        <PropertyRef Name="GuidGallery" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FRoleControlMenu_SRole">
+    <End Type="Gemini.SRole" Role="SRole" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Gemini.FRoleControlMenu" Role="FRoleControlMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SRole">
+        <PropertyRef Name="Guid" />
+      </Principal>
+      <Dependent Role="FRoleControlMenu">
+        <PropertyRef Name="GuidRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SUser_SRole">
+    <End Type="Gemini.SRole" Role="SRole" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Gemini.SUser" Role="SUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SRole">
+        <PropertyRef Name="Guid" />
+      </Principal>
+      <Dependent Role="SUser">
+        <PropertyRef Name="GuidRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

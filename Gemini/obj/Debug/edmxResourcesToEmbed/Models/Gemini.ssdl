@@ -1,0 +1,434 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Gemini.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BizProperty">
+    <Key>
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Area" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Beds" Type="int" Nullable="false" />
+    <Property Name="Baths" Type="int" Nullable="false" />
+    <Property Name="Garage" Type="int" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="PropertyType" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Long" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Lat" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="FloorPlans" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Sort" Type="int" Nullable="false" />
+    <Property Name="ViewCount" Type="int" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BizPropertyAmenity">
+    <Key>
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="GuidProperty" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CrmEmailSetting">
+    <Key>
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Note" Type="nvarchar" MaxLength="2000" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="PassEmail" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Smtp" Type="nvarchar" MaxLength="255" />
+    <Property Name="Port" Type="int" Nullable="false" />
+    <Property Name="IsHtml" Type="bit" Nullable="false" />
+    <Property Name="EnableSsl" Type="bit" Nullable="false" />
+    <Property Name="DelayTime" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CrmEmailTemplate">
+    <Key>
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="SubjectEmail" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Note" Type="nvarchar" MaxLength="2000" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="ContentTemplate" Type="ntext" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FControlMenu">
+    <Key>
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="GuidControl" Type="uniqueidentifier" />
+    <Property Name="GuidMenu" Type="uniqueidentifier" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+    <Property Name="Note" Type="nvarchar" MaxLength="2000" />
+  </EntityType>
+  <EntityType Name="FPropertyGallery">
+    <Key>
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="GuidProperty" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="GuidGallery" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FRoleControlMenu">
+    <Key>
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="GuidRole" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="GuidControl" Type="uniqueidentifier" />
+    <Property Name="GuidMenu" Type="uniqueidentifier" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+    <Property Name="Note" Type="nvarchar" MaxLength="2000" />
+  </EntityType>
+  <EntityType Name="SControl">
+    <Key>
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Note" Type="nvarchar" MaxLength="2000" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="SpriteCssClass" Type="nvarchar" MaxLength="255" />
+    <Property Name="EventClick" Type="nvarchar" MaxLength="255" />
+    <Property Name="Type" Type="nvarchar" MaxLength="255" />
+    <Property Name="Orderby" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SMenu">
+    <Key>
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Note" Type="nvarchar" MaxLength="2000" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="GuidLanguage" Type="uniqueidentifier" />
+    <Property Name="OrderMenu" Type="int" />
+    <Property Name="Icon" Type="nvarchar" MaxLength="255" />
+    <Property Name="GuidParent" Type="uniqueidentifier" />
+    <Property Name="Type" Type="nvarchar" MaxLength="255" />
+    <Property Name="LinkUrl" Type="nvarchar" MaxLength="255" />
+    <Property Name="FriendUrl" Type="nvarchar" MaxLength="255" />
+    <Property Name="RouterUrl" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="SRole">
+    <Key>
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Note" Type="nvarchar" MaxLength="2000" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="IsAdmin" Type="bit" />
+  </EntityType>
+  <EntityType Name="SUser">
+    <Key>
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="255" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Note" Type="nvarchar" MaxLength="2000" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Notification" Type="bit" Nullable="false" />
+    <Property Name="GuidRole" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="255" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="255" />
+    <Property Name="Email" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Position" Type="nvarchar" MaxLength="255" />
+    <Property Name="Avartar" Type="nvarchar" MaxLength="255" />
+    <Property Name="StartDate" Type="date" />
+    <Property Name="EndDate" Type="date" />
+    <Property Name="RecordsInPage" Type="int" />
+    <Property Name="Skype" Type="nvarchar" MaxLength="255" />
+    <Property Name="Facebook" Type="nvarchar" MaxLength="255" />
+    <Property Name="Twitter" Type="nvarchar" MaxLength="255" />
+    <Property Name="LinkedIn" Type="nvarchar" MaxLength="255" />
+    <Property Name="FullAddress" Type="nvarchar" MaxLength="2000" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="UGallery">
+    <Key>
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Note" Type="nvarchar" MaxLength="2000" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Link" Type="nvarchar" MaxLength="2000" />
+    <Property Name="Description" Type="nvarchar" MaxLength="2000" />
+    <Property Name="Image" Type="nvarchar" MaxLength="2000" />
+    <Property Name="GuidGroup" Type="uniqueidentifier" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="UGroup">
+    <Key>
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Note" Type="nvarchar" MaxLength="2000" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="SeoTitle" Type="nvarchar" MaxLength="255" />
+    <Property Name="SeoDescription" Type="nvarchar" MaxLength="255" />
+    <Property Name="SeoImage" Type="nvarchar" MaxLength="255" />
+    <Property Name="SeoFriendUrl" Type="nvarchar" MaxLength="255" />
+    <Property Name="CountView" Type="int" />
+    <Property Name="ParentGuid" Type="uniqueidentifier" />
+    <Property Name="LanguageGuid" Type="uniqueidentifier" />
+  </EntityType>
+  <Association Name="FK_BizProperty_SUser">
+    <End Role="SUser" Type="Self.SUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="BizProperty" Type="Self.BizProperty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SUser">
+        <PropertyRef Name="Guid" />
+      </Principal>
+      <Dependent Role="BizProperty">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BizPropertyAmenity_BizProperty">
+    <End Role="BizProperty" Type="Self.BizProperty" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="BizPropertyAmenity" Type="Self.BizPropertyAmenity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BizProperty">
+        <PropertyRef Name="Guid" />
+      </Principal>
+      <Dependent Role="BizPropertyAmenity">
+        <PropertyRef Name="GuidProperty" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FControlMenu_SControl">
+    <End Role="SControl" Type="Self.SControl" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="FControlMenu" Type="Self.FControlMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SControl">
+        <PropertyRef Name="Guid" />
+      </Principal>
+      <Dependent Role="FControlMenu">
+        <PropertyRef Name="GuidControl" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FControlMenu_SMenu">
+    <End Role="SMenu" Type="Self.SMenu" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="FControlMenu" Type="Self.FControlMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SMenu">
+        <PropertyRef Name="Guid" />
+      </Principal>
+      <Dependent Role="FControlMenu">
+        <PropertyRef Name="GuidMenu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FPropertyGallery_BizProperty">
+    <End Role="BizProperty" Type="Self.BizProperty" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="FPropertyGallery" Type="Self.FPropertyGallery" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BizProperty">
+        <PropertyRef Name="Guid" />
+      </Principal>
+      <Dependent Role="FPropertyGallery">
+        <PropertyRef Name="GuidProperty" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FPropertyGallery_UGallery">
+    <End Role="UGallery" Type="Self.UGallery" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="FPropertyGallery" Type="Self.FPropertyGallery" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UGallery">
+        <PropertyRef Name="Guid" />
+      </Principal>
+      <Dependent Role="FPropertyGallery">
+        <PropertyRef Name="GuidGallery" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FRoleControlMenu_SRole">
+    <End Role="SRole" Type="Self.SRole" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="FRoleControlMenu" Type="Self.FRoleControlMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SRole">
+        <PropertyRef Name="Guid" />
+      </Principal>
+      <Dependent Role="FRoleControlMenu">
+        <PropertyRef Name="GuidRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SUser_SRole">
+    <End Role="SRole" Type="Self.SRole" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SUser" Type="Self.SUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SRole">
+        <PropertyRef Name="Guid" />
+      </Principal>
+      <Dependent Role="SUser">
+        <PropertyRef Name="GuidRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="fnSplit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sInputList" Type="varchar" Mode="In" />
+    <Parameter Name="sDelimiter" Type="varchar" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="item" Type="varchar" MaxLength="8000" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="GeminiStoreContainer">
+    <EntitySet Name="BizProperty" EntityType="Self.BizProperty" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BizPropertyAmenity" EntityType="Self.BizPropertyAmenity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CrmEmailSetting" EntityType="Self.CrmEmailSetting" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CrmEmailTemplate" EntityType="Self.CrmEmailTemplate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FControlMenu" EntityType="Self.FControlMenu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FPropertyGallery" EntityType="Self.FPropertyGallery" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FRoleControlMenu" EntityType="Self.FRoleControlMenu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SControl" EntityType="Self.SControl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SMenu" EntityType="Self.SMenu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SRole" EntityType="Self.SRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SUser" EntityType="Self.SUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UGallery" EntityType="Self.UGallery" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UGroup" EntityType="Self.UGroup" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_BizProperty_SUser" Association="Self.FK_BizProperty_SUser">
+      <End Role="SUser" EntitySet="SUser" />
+      <End Role="BizProperty" EntitySet="BizProperty" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BizPropertyAmenity_BizProperty" Association="Self.FK_BizPropertyAmenity_BizProperty">
+      <End Role="BizProperty" EntitySet="BizProperty" />
+      <End Role="BizPropertyAmenity" EntitySet="BizPropertyAmenity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FControlMenu_SControl" Association="Self.FK_FControlMenu_SControl">
+      <End Role="SControl" EntitySet="SControl" />
+      <End Role="FControlMenu" EntitySet="FControlMenu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FControlMenu_SMenu" Association="Self.FK_FControlMenu_SMenu">
+      <End Role="SMenu" EntitySet="SMenu" />
+      <End Role="FControlMenu" EntitySet="FControlMenu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FPropertyGallery_BizProperty" Association="Self.FK_FPropertyGallery_BizProperty">
+      <End Role="BizProperty" EntitySet="BizProperty" />
+      <End Role="FPropertyGallery" EntitySet="FPropertyGallery" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FPropertyGallery_UGallery" Association="Self.FK_FPropertyGallery_UGallery">
+      <End Role="UGallery" EntitySet="UGallery" />
+      <End Role="FPropertyGallery" EntitySet="FPropertyGallery" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FRoleControlMenu_SRole" Association="Self.FK_FRoleControlMenu_SRole">
+      <End Role="SRole" EntitySet="SRole" />
+      <End Role="FRoleControlMenu" EntitySet="FRoleControlMenu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SUser_SRole" Association="Self.FK_SUser_SRole">
+      <End Role="SRole" EntitySet="SRole" />
+      <End Role="SUser" EntitySet="SUser" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

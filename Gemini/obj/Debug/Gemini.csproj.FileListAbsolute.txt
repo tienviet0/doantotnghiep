@@ -1,0 +1,60 @@
+D:\Corework\Gemini\bin\Gemini.dll.config
+D:\Corework\Gemini\bin\Gemini.dll
+D:\Corework\Gemini\bin\Gemini.pdb
+D:\Corework\Gemini\bin\en-US\Gemini.resources.dll
+D:\Corework\Gemini\bin\en-GB\Gemini.resources.dll
+D:\Corework\Gemini\bin\Antlr3.Runtime.dll
+D:\Corework\Gemini\bin\ComponentPro.TemplateEngine.dll
+D:\Corework\Gemini\bin\EntityFramework.dll
+D:\Corework\Gemini\bin\EntityFramework.SqlServer.dll
+D:\Corework\Gemini\bin\HtmlAgilityPack.dll
+D:\Corework\Gemini\bin\Kendo.Mvc.dll
+D:\Corework\Gemini\bin\log4net.dll
+D:\Corework\Gemini\bin\Microsoft.IdentityModel.dll
+D:\Corework\Gemini\bin\Microsoft.Web.Infrastructure.dll
+D:\Corework\Gemini\bin\Mmosoft.Facebook.Sdk.dll
+D:\Corework\Gemini\bin\Newtonsoft.Json.dll
+D:\Corework\Gemini\bin\SINNOVA.Core.dll
+D:\Corework\Gemini\bin\System.Web.Helpers.dll
+D:\Corework\Gemini\bin\System.Web.Mvc.dll
+D:\Corework\Gemini\bin\System.Web.Optimization.dll
+D:\Corework\Gemini\bin\System.Web.Razor.dll
+D:\Corework\Gemini\bin\System.Web.WebPages.Deployment.dll
+D:\Corework\Gemini\bin\System.Web.WebPages.dll
+D:\Corework\Gemini\bin\System.Web.WebPages.Razor.dll
+D:\Corework\Gemini\bin\WebGrease.dll
+D:\Corework\Gemini\bin\Antlr3.Runtime.pdb
+D:\Corework\Gemini\bin\EntityFramework.xml
+D:\Corework\Gemini\bin\EntityFramework.SqlServer.xml
+D:\Corework\Gemini\bin\HtmlAgilityPack.pdb
+D:\Corework\Gemini\bin\HtmlAgilityPack.xml
+D:\Corework\Gemini\bin\log4net.xml
+D:\Corework\Gemini\bin\Newtonsoft.Json.xml
+D:\Corework\Gemini\bin\System.Web.Helpers.xml
+D:\Corework\Gemini\bin\System.Web.Mvc.xml
+D:\Corework\Gemini\bin\System.Web.Optimization.xml
+D:\Corework\Gemini\bin\System.Web.Razor.xml
+D:\Corework\Gemini\bin\System.Web.WebPages.xml
+D:\Corework\Gemini\bin\System.Web.WebPages.Deployment.xml
+D:\Corework\Gemini\bin\System.Web.WebPages.Razor.xml
+D:\Corework\Gemini\obj\Debug\Gemini.csproj.AssemblyReference.cache
+D:\Corework\Gemini\obj\Debug\Gemini.Resources.Resource.resources
+D:\Corework\Gemini\obj\Debug\Gemini.Resources.Resource.en-US.resources
+D:\Corework\Gemini\obj\Debug\Gemini.Resources.Resource.en-GB.resources
+D:\Corework\Gemini\obj\Debug\Gemini.csproj.GenerateResource.cache
+D:\Corework\Gemini\obj\Debug\Gemini.csproj.CoreCompileInputs.cache
+D:\Corework\Gemini\obj\Debug\en-US\Gemini.resources.dll
+D:\Corework\Gemini\obj\Debug\en-GB\Gemini.resources.dll
+D:\Corework\Gemini\obj\Debug\Gemini.csproj.CopyComplete
+D:\Corework\Gemini\obj\Debug\Gemini.dll
+D:\Corework\Gemini\obj\Debug\Gemini.pdb
+D:\Corework\Gemini\bin\RestSharp.dll
+D:\Corework\Gemini\bin\RestSharp.xml
+C:\Users\LENOVO\OneDrive\Máy tính\viet\BĐS-20230621T031300Z-001\BĐS\Gemini\obj\Debug\Gemini.csproj.AssemblyReference.cache
+C:\Users\LENOVO\OneDrive\Máy tính\viet\BĐS-20230621T031300Z-001\BĐS\Gemini\obj\Debug\Gemini.Resources.Resource.resources
+C:\Users\LENOVO\OneDrive\Máy tính\viet\BĐS-20230621T031300Z-001\BĐS\Gemini\obj\Debug\Gemini.Resources.Resource.en-US.resources
+C:\Users\LENOVO\OneDrive\Máy tính\viet\BĐS-20230621T031300Z-001\BĐS\Gemini\obj\Debug\Gemini.Resources.Resource.en-GB.resources
+C:\Users\LENOVO\OneDrive\Máy tính\viet\BĐS-20230621T031300Z-001\BĐS\Gemini\obj\Debug\Gemini.csproj.GenerateResource.cache
+C:\Users\LENOVO\OneDrive\Máy tính\viet\BĐS-20230621T031300Z-001\BĐS\Gemini\obj\Debug\Gemini.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\OneDrive\Máy tính\viet\BĐS-20230621T031300Z-001\BĐS\Gemini\obj\Debug\Gemini.dll
+C:\Users\LENOVO\OneDrive\Máy tính\viet\BĐS-20230621T031300Z-001\BĐS\Gemini\obj\Debug\Gemini.pdb

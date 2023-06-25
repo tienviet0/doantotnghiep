@@ -1,0 +1,290 @@
+﻿@model Gemini.Models._20_Web.PropertyModel
+@{
+    Layout = "~/Views/Shared/_Root.Head.cshtml";
+}
+
+@if (Model.Property != null)
+{
+    <main id="main">
+        <!-- ======= Intro Single ======= -->
+        <section class="intro-single">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-lg-8">
+                        <div class="title-single-box">
+                            @if (Model.Property.Address.Split(',').Length > 0)
+                            {
+                                <h1 class="title-single">@Model.Property.Address.Split(',')[0].Trim()</h1>
+                                <span class="color-text-a">@Model.Property.Address.Split(',')[1].Trim()</span>
+                            }
+                            else
+                            {
+                                <h1 class="title-single">@Model.Property.Address.Split(',')[0].Trim()</h1>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-4">
+                        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="/">Trang chủ</a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a>Dự án</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    #@(Model.Property.Sort + 1)
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section><!-- End Intro Single-->
+        <!-- ======= Property Single ======= -->
+        <section class="property-single nav-arrow-b">
+            <div class="container">
+                <div class="row justify-content-center" style="margin-bottom: 20px">
+                    <div class="col-lg-8">
+                        <div id="property-single-carousel" class="swiper">
+                            <div class="swiper-wrapper">
+                                @foreach (var item in Model.Property.ListGallery)
+                                {
+                                    <div class="carousel-item-b swiper-slide">
+                                        <img src="@item.Image" alt="" style="max-height: 500px; max-width: 100%">
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <div class="property-single-carousel-pagination carousel-pagination"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="row justify-content-between">
+                            <div class="col-md-5 col-lg-4">
+                                <div class="property-price d-flex justify-content-center foo">
+                                    <div class="card-header-c d-flex">
+                                        <div class="card-box-ico">
+                                            <span class="bi bi-cash"></span>
+                                        </div>
+                                        <div class="card-title-c align-self-center">
+                                            <h5 class="title-c">@String.Format("{0:n0}", Model.Property.Price).Replace(".", ",")</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="property-summary">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="title-box-d section-t4">
+                                                <h3 class="title-d">Tóm tắt nhanh</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="summary-list">
+                                        <ul class="list">
+                                            <li class="d-flex justify-content-between">
+                                                <strong>ID:</strong>
+                                                <span>#@(Model.Property.Sort + 1)</span>
+                                            </li>
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Địa chỉ:</strong>
+                                                <span id="span-address" title="@Model.Property.Address">@Model.Property.Address</span>
+                                            </li>
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Loại dự án:</strong>
+                                                <span>@Model.Property.PropertyTypeName</span>
+                                            </li>
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Hình thức:</strong>
+                                                <span>@Model.Property.TypeName</span>
+                                            </li>
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Trạng thái:</strong>
+                                                <span>@Model.Property.StatusName</span>
+                                            </li>
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Diện tích:</strong>
+                                                <span>
+                                                    @Model.Property.Area m
+                                                    <sup>2</sup>
+                                                </span>
+                                            </li>
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Phòng ngủ:</strong>
+                                                <span>@Model.Property.Beds</span>
+                                            </li>
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Phòng tắm:</strong>
+                                                <span>@Model.Property.Baths</span>
+                                            </li>
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Garage:</strong>
+                                                <span>@Model.Property.Garage</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-7 col-lg-7 section-md-t3">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="title-box-d">
+                                            <h3 class="title-d">Mô tả dự án</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="property-description">
+                                    <p class="description color-text-a">
+                                        @Html.Raw(HttpUtility.HtmlDecode(Model.Property.Description))
+                                    </p>
+                                </div>
+                                <div class="row section-t3">
+                                    <div class="col-sm-12">
+                                        <div class="title-box-d">
+                                            <h3 class="title-d">Tiện ích</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="amenities-list color-text-a">
+                                    <ul class="list-a no-margin" style="width: 100%;">
+                                        @if (Model.Property.ListAmenity != null && Model.Property.ListAmenity.Any())
+                                        {
+                                            foreach (var item in Model.Property.ListAmenity)
+                                            {
+                                                <li>@item.Name</li>
+                                            }
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-10 offset-md-1">
+                        <ul class="nav nav-pills-a nav-pills mb-3 section-t3" id="pills-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="pills-plans-tab" data-bs-toggle="pill" href="#pills-plans" role="tab" aria-controls="pills-plans" aria-selected="false">Thiết kế mặt bằng</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-map-tab" data-bs-toggle="pill" href="#pills-map" role="tab" aria-controls="pills-map" aria-selected="false">Map</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-plans" role="tabpanel" aria-labelledby="pills-plans-tab">
+                                <img src="@Model.Property.FloorPlans" alt="" class="img-fluid">
+                            </div>
+                            <div class="tab-pane fade" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
+                                <div id="map"></div>
+                            </div>
+                        </div>
+                    </div>
+                    @if (Model.User != null)
+                    {
+                        <div class="col-md-12">
+                            <div class="row section-t3">
+                                <div class="col-sm-12">
+                                    <div class="title-box-d">
+                                        <h3 class="title-d">Liên hệ</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-lg-4">
+                                    <img src="@(!string.IsNullOrWhiteSpace(Model.User.Avartar) ? Model.User.Avartar : "/Content/Custom/empty-album.png")" alt="" class="img-fluid" style="width: 100%;">
+                                </div>
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="property-agent">
+                                        <h4 class="title-agent">@Model.User.FullName</h4>
+                                        <p class="color-text-a">
+                                            Chúng tôi cung cấp đầy đủ và chính xác nhất thông tin các dự án bất động sản trên toàn quốc song hành với dịch vụ tư vấn nhanh chóng và hiệu quả
+                                        </p>
+                                        <ul class="list-unstyled">
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Điện thoại:</strong>
+                                                <span class="color-text-a">@Model.User.Mobile</span>
+                                            </li>
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Email:</strong>
+                                                <span class="color-text-a">@Model.User.Email</span>
+                                            </li>
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Skype:</strong>
+                                                <span class="color-text-a">@Model.User.Skype</span>
+                                            </li>
+                                        </ul>
+                                        <div class="socials-a">
+                                            <ul class="list-inline">
+                                                <li class="list-inline-item">
+                                                    <a href="@Model.User.Facebook" target="_blank">
+                                                        <i class="bi bi-facebook" aria-hidden="true"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="@Model.User.Twitter" target="_blank">
+                                                        <i class="bi bi-twitter" aria-hidden="true"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="@Model.User.LinkedIn" target="_blank">
+                                                        <i class="bi bi-linkedin" aria-hidden="true"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-lg-4">
+                                    <div class="property-contact">
+                                        @using (Html.BeginForm("PropertySendEmail", "HomeCommon", FormMethod.Post))
+                                        {
+                                            <div class="row">
+                                                <div class="col-md-12 mb-1">
+                                                    <div class="form-group">
+                                                        @Html.HiddenFor(m => m.SendEmailModel.To, new { @Value = Model.User.Email })
+                                                        @Html.TextBoxFor(m => m.SendEmailModel.Name, new { @class = "form-control", @required = "required", @placeholder = "Họ tên *" })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 mb-1">
+                                                    <div class="form-group">
+                                                        @Html.TextBoxFor(m => m.SendEmailModel.Email, new { @class = "form-control", @required = "required", @placeholder = "Email *", @type = "email" })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 mb-1">
+                                                    <div class="form-group">
+                                                        @Html.TextAreaFor(m => m.SendEmailModel.Message, new { @class = "form-control", @required = "required", rows = "5", cols = "45", @placeholder = "Nội dung *" })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 mt-3">
+                                                    <button type="submit" class="btn btn-a">Gửi</button>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </section><!-- End Property Single-->
+
+    </main><!-- End #main -->
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly" defer></script>
+    <script>
+        // Initialize and add the map
+        function initMap() {
+            const location = { lat: parseFloat('@Model.Property.Lat'), lng: parseFloat('@Model.Property.Long') };
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 17,
+                center: location,
+            });
+            const marker = new google.maps.Marker({
+                position: location,
+                map: map,
+            });
+        }
+
+        window.initMap = initMap;
+    </script>
+}

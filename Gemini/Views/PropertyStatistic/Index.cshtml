@@ -1,0 +1,42 @@
+﻿@model List<Gemini.Models._03_Biz.BizPropertyModel>
+@{
+    Layout = "~/Views/Shared/_FormList.cshtml";
+}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<div>
+    <canvas id="myChart" style="height: 800px; width: 100%"></canvas>
+</div>
+
+<script>
+    var chartData = @Html.Raw(Json.Encode(Model));
+    var labels = [];
+    var datas = [];
+    for (var i = 0; i < chartData.length; i++) {
+        var value = chartData[i];
+
+        labels.push("#" + value.Sort);
+        datas.push(value.ViewCount);
+    }
+
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'View Count',
+                data: datas,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>

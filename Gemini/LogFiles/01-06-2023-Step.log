@@ -1,0 +1,25 @@
+2023-06-01 10:23:21,404: [DEBUG] System.Data.Entity.Validation.DbValidationError
+2023-06-01 10:23:21,413: [DEBUG] System.ArgumentException: ContentTemplate The ContentTemplate field is required. ---> System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at Gemini.Controllers.Bussiness.GeminiController.SaveData(String nameTable) in D:\Corework\Gemini\Controllers\Bussiness\GeminiController.cs:line 60
+   --- End of inner exception stack trace ---
+   at Gemini.Controllers.Bussiness.GeminiController.SaveData(String nameTable) in D:\Corework\Gemini\Controllers\Bussiness\GeminiController.cs:line 76
+   at Gemini.Controllers._04_Crm.CrmEmailTemplateController.Update(CrmEmailTemplateModel viewModel) in D:\Corework\Gemini\Controllers\04_Crm\CrmEmailTemplateController.cs:line 132
+2023-06-01 10:29:45,646: [DEBUG] Send email Fail: Value cannot be null.
+Parameter name: addresses
+2023-06-01 10:31:14,739: [DEBUG] Send email Fail: Value cannot be null.
+Parameter name: addresses
+2023-06-01 10:33:31,777: [DEBUG] Send email Success
+2023-06-01 10:34:51,908: [DEBUG] Send email Success
+2023-06-01 10:35:19,695: [DEBUG] Send email Success
+2023-06-01 10:36:56,672: [ERROR] System.InvalidOperationException: The context cannot be used while the model is being created. This exception may be thrown if the context is used inside the OnModelCreating method or if the same context instance is accessed by multiple threads concurrently. Note that instance members of DbContext and related classes are not guaranteed to be thread safe.
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.Initialize()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   at System.Linq.Queryable.FirstOrDefault[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Gemini.Controllers._20_Web.Home.HomeCommonController.Property(Guid guid) in D:\Corework\Gemini\Controllers\20_Web\Home\HomeCommonController.cs:line 231
+2023-06-01 11:06:52,670: [DEBUG] AdminController-Login: Ðang nh?p
+2023-06-01 11:06:52,723: [DEBUG] AdminController-Login: Ðang nh?p thành công

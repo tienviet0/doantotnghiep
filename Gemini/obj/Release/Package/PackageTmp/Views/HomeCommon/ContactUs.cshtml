@@ -1,0 +1,117 @@
+﻿@model Gemini.Models._20_Web.ContactUsModel
+@{
+    Layout = "~/Views/Shared/_Root.Head.cshtml";
+}
+
+@if (Model != null)
+{
+    <!-- Hero Section Begin -->
+    <section class="hero hero-normal">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="hero__categories">
+                        <div class="hero__categories__all">
+                            <i class="fa fa-bars"></i>
+                            <span>Danh mục tin</span>
+                        </div>
+                        <ul>
+                            @if (Model.ListPosCategory != null && Model.ListPosCategory.Any())
+                            {
+                                foreach (var item in Model.ListPosCategory)
+                                {
+                                    <li><a href="/danh-muc/@item.SeoFriendUrl">@item.Name</a></li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="hero__search">
+                        <div class="hero__search__form">
+                            <form action="javascript:loadSearchData();">
+                                <input type="text" id="keyWord" placeholder="Tìm kiếm ...">
+                                <button type="button" class="site-btn" onclick="loadSearchData();"><i class="fa fa-search" aria-hidden="true"></i></button>
+                            </form>
+                        </div>
+                        <div class="hero__search__phone">
+                            <div class="hero__search__phone__icon">
+                                <i class="fa fa-phone"></i>
+                            </div>
+                            <div class="hero__search__phone__text">
+                                <h5>0983 279 347</h5>
+                                <span>Hỗ trợ 24/7</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="/assets/theme/img/breadcrumb.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>Liên hệ</h2>
+                        <div class="breadcrumb__option">
+                            <a href="/">Trang chủ</a>
+                            <span>Liên hệ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Contact Section Begin -->
+    <section class="contact spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-6 text-center">
+                    <div class="contact__widget">
+                        <span class="icon_phone"></span>
+                        <h4>SĐT</h4>
+                        <p>0983 279 347</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 text-center">
+                    <div class="contact__widget">
+                        <span class="icon_pin_alt"></span>
+                        <h4>Địa chỉ</h4>
+                        <p>TP Đà Nẵng</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 text-center">
+                    <div class="contact__widget">
+                        <span class="icon_mail_alt"></span>
+                        <h4>Email</h4>
+                        <p>duongtq6797@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section End -->
+
+    <!-- Map Begin -->
+    <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3834.083308595907!2d108.22738281528864!3d16.061166143919042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314219d2f38ce45d%3A0xbfa47dd116d4db88!2zQ-G6p3UgUuG7k25nLCBBbiBI4bqjaSBUw6J5LCBTxqFuIFRyw6AsIMSQw6AgTuG6tW5nIDU1MDAwMCwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1667415975704!5m2!1sen!2s"
+                height="500" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        <div class="map-inside">
+            <i class="icon_pin"></i>
+            <div class="inside-widget">
+                <h4>TP Đà Nẵng</h4>
+                <ul>
+                    <li>SĐT: 0983 279 347</li>
+                    <li>Địa chỉ: TP Đà Nẵng</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Map End -->
+}
